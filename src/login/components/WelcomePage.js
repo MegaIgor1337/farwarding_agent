@@ -1,38 +1,63 @@
-import React, { useState } from "react";
-import "../css/welcomePage.css"; 
+// WelcomePage.js
+import React, { Component } from "react";
+import "../css/welcomePage.css";
 import "../css/loginBox.css";
 import Track from "./Track";
 import HeaderString from "./HeaderString";
 import LoginModal from "./LoginModal";
 
-
-class WelcomePage extends React.Component {
+class WelcomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showModal: false,
-      showContacts: false,
-      rotateArrow: false
+      showContactsEmail: false,
+      arrowRotated: false,
     };
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.toggleContactsEmail = this.toggleContactsEmail.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
   }
 
-  openModal = () => {
+  componentDidMount() {
+    document.addEventListener("click", this.handleDocumentClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this.handleDocumentClick);
+  }
+
+  handleDocumentClick(event) {
+    const contactsContainer = document.querySelector(".contacts-container");
+    if (
+      contactsContainer &&
+      !contactsContainer.contains(event.target) &&
+      this.state.showContactsEmail
+    ) {
+      this.setState({ showContactsEmail: false, arrowRotated: false });
+    }
+  }
+
+  openModal() {
     this.setState({ showModal: true });
-  };
+  }
 
-  closeModal = () => {
+  closeModal() {
     this.setState({ showModal: false });
-  };
+  }
 
-  toggleContacts = () => {
+  toggleContactsEmail() {
     this.setState((prevState) => ({
-      showContacts: !prevState.showContacts,
-      rotateArrow: !prevState.rotateArrow
+      showContactsEmail: !prevState.showContactsEmail,
+      arrowRotated: !prevState.arrowRotated,
     }));
-  };
+  }
 
   render() {
-    const { showContacts, rotateArrow, showModal } = this.state;
+    const { showModal, showContactsEmail, arrowRotated } = this.state;
+
     return (
       <div className="fullscreen-bg">
         <Track />
@@ -43,13 +68,25 @@ class WelcomePage extends React.Component {
           </button>
           <button className="registration-button">Registration</button>
         </div>
-        <div
-          className={`contacts-container ${showContacts ? 'active' : ''}`}
-          onClick={this.toggleContacts} // Используйте this.toggleContacts
-        >
-          <div className="contacts-text">Contacts</div>
-          <div className={`contacts-arrow ${rotateArrow ? 'rotate' : ''}`}></div>
-          <div className="contacts-email">admin@example.com</div>
+        <div className="contacts-container">
+          <div
+            className={`contacts-text ${showContactsEmail ? "active" : ""}`}
+            onClick={this.toggleContactsEmail}
+          >
+            Contacts
+            <div
+              className={`contacts-arrow ${
+                arrowRotated ? "rotate" : ""
+              }`}
+            ></div>
+          </div>
+          <div
+            className={`contacts-email ${
+              showContactsEmail ? "active" : ""
+            }`}
+          >
+            admin@example.com
+          </div>
         </div>
         <LoginModal showModal={showModal} closeModal={this.closeModal} />
       </div>

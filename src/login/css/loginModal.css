@@ -30,3 +30,6 @@
   transform: translateY(0); /* Показывать на экране после анимации */
 }
 
+.modal-content.ReactModal__Content--before-close {
+  transform: translateY(100vh); /* Убирать за пределы экрана при закрытии */
+}

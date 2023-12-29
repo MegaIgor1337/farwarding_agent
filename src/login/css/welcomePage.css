@@ -15,7 +15,6 @@ body, html {
 
 /* Стили для изображения на фоне */
 .img-track {
-
   position: absolute;
   width: 100%;
   height: 100%;
@@ -38,3 +37,93 @@ body, html {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Тень текста */
   letter-spacing: 2px; /* Расстояние между буквами */
 }
+
+/* Стили для контейнера "Contacts" и стрелочки */
+.contacts-container {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.contacts-text {
+  position: relative;
+  padding-right: 35px; /* Уменьшим отступ для стрелочки до 35px */
+}
+
+.contacts-arrow {
+  position: absolute;
+  top: 50%;
+  right: 20px; /* Приблизим стрелочку к слову на 5px */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid #000; /* Изменим цвет и размер стрелки */
+  transition: transform 0.3s ease; /* Анимация поворота */
+}
+
+.rotate {
+  transform: rotate(-180deg); /* Используем rotate для корректного поворота */
+}
+
+.contacts-email {
+  display: none;
+  position: absolute;
+  top: 100%; /* Положим окно с почтой под стрелкой */
+  right: 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out, max-height 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.contacts-email.active {
+  display: block;
+  opacity: 1;
+  max-height: 100px; /* Увеличим высоту, если это необходимо */
+  transform: translateY(0);
+}
+
+
+.contacts-container {
+  position: absolute;
+  margin-top: 5px;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.contacts-text {
+  font-size: 25px;
+  color: #333;
+  margin-right: 10px;
+}
+
+.contacts-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #333;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contacts-text {
+  /* Ваши остальные стили */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  transition: color 0.3s ease-in-out; /* Добавляем плавность изменения */
+}
+
+.contacts-text:hover {
+  color: #201f1f; /* Новый цвет текста при наведении */
+}
+
