@@ -119,7 +119,7 @@ body, html {
 
 .contacts-text {
   /* Ваши остальные стили */
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family:Georgia, 'Times New Roman', Times, serif;
   transition: color 0.3s ease-in-out; /* Добавляем плавность изменения */
 }
 
