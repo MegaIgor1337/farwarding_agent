@@ -1,0 +1,106 @@
+.button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.login-button,
+.registration-button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(9, 49, 101);
+  color: white;
+  cursor: pointer;
+}
+
+.registration-button {
+  background-color:rgb(9, 49, 101);
+}
+
+.contacts-container {
+  position: absolute;
+  margin-top: 5px;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.contacts-text {
+  font-size: 25px;
+  color: #333;
+  margin-right: 10px;
+}
+
+.contacts-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #333;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contacts-email {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: opacity 0.3s ease-in-out, max-height 0.5s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.contacts-container.active .contacts-email {
+  display: block;
+  max-height: 100px; /* Максимальная высота для почты админа */
+}
+
+.contacts-container.active .contacts-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.login-button:hover,
+.registration-button:hover {
+  background-color: #072d5a; /* Новый цвет при наведении */
+  transition: background-color 0.3s ease-in-out; /* Плавное изменение цвета */
+}
+
+.contacts-text:hover {
+  color: #201f1f; /* Новый цвет текста при наведении */
+  transition: color 0.3s ease-in-out; /* Плавное изменение цвета текста */
+}
+
+.login-button,
+.registration-button {
+  /* Ваши остальные стили */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Добавляем плавность изменения */
+}
+
+.login-button:hover,
+.registration-button:hover {
+  background-color: #072d5a; /* Новый цвет при наведении */
+  color: #ffffff; /* Новый цвет текста при наведении */
+}
+
+.contacts-text {
+  /* Ваши остальные стили */
+  transition: color 0.3s ease-in-out; /* Добавляем плавность изменения */
+}
+
+.contacts-text:hover {
+  color: #201f1f; /* Новый цвет текста при наведении */
+}
+
