@@ -1,18 +1,11 @@
 /* loginContainer.css */
 
-.container {
-  width: 100%;
-  max-width: 400px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
 
 .login-title {
   padding: 15px;
   font-size: 22px;
   font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
 }
 
@@ -56,8 +49,24 @@
   text-align: center;
   text-decoration: none;
   transition: all 0.3s;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .btn--form:hover {
   background-color: #3c048f; /* Цвет при наведении */
+}
+
+.login-form input.invalid {
+  border-color: red;
+}
+
+.validation-message {
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 3px;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.login-form input.invalid {
+  border-color: red !important;
 }

@@ -1,4 +1,3 @@
-// WelcomePage.js
 import React, { Component } from "react";
 import "../css/welcomePage.css";
 import "../css/loginBox.css";
