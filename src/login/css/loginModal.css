@@ -15,7 +15,7 @@
 
 /* Стили для контента модального окна */
 .modal-content {
-  width: 80%;
+  width: 100%;
   max-width: 400px;
   background-color: white;
   padding: 20px;

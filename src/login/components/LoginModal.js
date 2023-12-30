@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Modal from 'react-modal';
 import "../css/loginModal.css"; // Создайте файл стилей для окна модального ввода
+import LoginContainer from "./LoginContainer";
 
 class LoginModal extends React.Component {
 
@@ -30,14 +31,7 @@ class LoginModal extends React.Component {
         className={`modal-content ${isClosing ? 'ReactModal__Content--before-close' : ''}`}
         overlayClassName="modal-overlay"
       >
-        <h2>Login</h2>
-        <form>
-          <label>Email:</label>
-          <input type="email" />
-          <label>Password:</label>
-          <input type="password" />
-          <button type="submit">Login</button>
-        </form>
+       <LoginContainer/>
       </Modal>
     );
   }
