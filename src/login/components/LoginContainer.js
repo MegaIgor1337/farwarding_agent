@@ -107,12 +107,12 @@ class LoginContainer extends React.Component {
 
     return (
       <div className="modal-container">
-        <h2 className="login-title">Login</h2>
+        <h2 className="login-title">Вход</h2>
         <form className="login-form" onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="email"></label>
             <input
-              placeholder="Email"
+              placeholder="Эл. почта"
               className={`${!emailValid && emailVisited ? "invalid" : ""}`}
               onFocus={this.handleEmailFocus}
               onBlur={this.handleEmailBlur}
@@ -121,8 +121,8 @@ class LoginContainer extends React.Component {
             {!emailValid && emailVisited && !emailFocused && (
               <p className="validation-message">
                 {emailVisited && !emailValid && emailValue.trim() === ""
-                  ? "Required field"
-                  : "Invalid email format"}
+                  ? "Обязательное поле"
+                  : "Неверный формат почты"}
               </p>
             )}
           </div>
@@ -130,7 +130,7 @@ class LoginContainer extends React.Component {
             <label htmlFor="password"></label>
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Пароль"
               className={`${!passwordValid && passwordVisited ? "invalid" : ""}`}
               onFocus={this.handlePasswordFocus}
               onBlur={this.handlePasswordBlur}
@@ -139,13 +139,13 @@ class LoginContainer extends React.Component {
             {!passwordValid && passwordVisited && !passwordFocused && (
               <p className="validation-message">
                 {passwordVisited && !passwordValid && passwordValue.trim() === ""
-                  ? "Required field"
+                  ? "Обязательное поле"
                   : ""}
               </p>
             )}
           </div>
           <button className="btn btn--form" type="submit">
-            Login
+            Войти
           </button>
         </form>
       </div>

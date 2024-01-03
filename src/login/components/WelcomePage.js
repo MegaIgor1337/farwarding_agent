@@ -63,16 +63,16 @@ class WelcomePage extends Component {
         <HeaderString />
         <div className="button-container">
           <button onClick={this.openModal} className="login-button">
-            Login
+            Войти
           </button>
-          <button className="registration-button">Registration</button>
+          <button className="registration-button">Регистрация</button>
         </div>
         <div className="contacts-container">
           <div
             className={`contacts-text ${showContactsEmail ? "active" : ""}`}
             onClick={this.toggleContactsEmail}
           >
-            Contacts
+            Контакты
             <div
               className={`contacts-arrow ${
                 arrowRotated ? "rotate" : ""
