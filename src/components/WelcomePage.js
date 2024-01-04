@@ -4,6 +4,7 @@ import "../css/loginBox.css";
 import Track from "./Track";
 import HeaderString from "./HeaderString";
 import LoginModal from "./LoginModal";
+import Contact from "./ContactComponent.js";
 
 class WelcomePage extends Component {
   constructor(props) {
@@ -67,26 +68,11 @@ class WelcomePage extends Component {
           </button>
           <button className="registration-button">Регистрация</button>
         </div>
-        <div className="contacts-container">
-          <div
-            className={`contacts-text ${showContactsEmail ? "active" : ""}`}
-            onClick={this.toggleContactsEmail}
-          >
-            Контакты
-            <div
-              className={`contacts-arrow ${
-                arrowRotated ? "rotate" : ""
-              }`}
-            ></div>
-          </div>
-          <div
-            className={`contacts-email ${
-              showContactsEmail ? "active" : ""
-            }`}
-          >
-            admin@example.com
-          </div>
-        </div>
+        <Contact
+          showContactsEmail={showContactsEmail}
+          arrowRotated={arrowRotated}
+          toggleContactsEmail={this.toggleContactsEmail}
+        />
         <LoginModal showModal={showModal} closeModal={this.closeModal} />
       </div>
     );

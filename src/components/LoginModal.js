@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Modal from 'react-modal';
 import "../css/loginModal.css"; // Создайте файл стилей для окна модального ввода
 import LoginContainer from "./LoginContainer";
