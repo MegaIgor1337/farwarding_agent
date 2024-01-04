@@ -70,3 +70,11 @@
 .login-form input.invalid {
   border-color: red !important;
 }
+
+.error-message {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: red;
+  font-size: 18px;
+  margin-top: 10px;
+}

@@ -1,5 +1,14 @@
 import React from "react";
 import "../css/loginContainer.css";
+import { request, setAuthToken } from "../util/axios_helper";
+import ErrorPage from "../pages/ErrorPage";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+
 
 class LoginContainer extends React.Component {
   constructor(props) {
@@ -12,6 +21,8 @@ class LoginContainer extends React.Component {
       emailValue: "",
       passwordValue: "",
       emailVisited: false,
+      errorMessage: "",
+      redirectToErrorPage: false, 
     };
 
     this.handleEmailFocus = this.handleEmailFocus.bind(this);
@@ -22,11 +33,15 @@ class LoginContainer extends React.Component {
   }
 
   handleEmailFocus = () => {
-    this.setState({ emailFocused: true });
+    this.setState(() => ({
+      emailFocused: true, 
+      errorMessage: ""}));
   };
 
   handlePasswordFocus = () => {
-    this.setState({ passwordFocused: true });
+    this.setState(() => ({
+      passwordFocused: true, 
+      errorMessage: ""}));
   };
 
   handleEmailBlur = () => {
@@ -72,7 +87,7 @@ class LoginContainer extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
   
-    const { emailValue, passwordValue } = this.state;
+    const {emailValid, passwordValid, emailValue, passwordValue } = this.state;
   
     // Check if fields are empty
     const emailEmpty = emailValue.trim() === "";
@@ -90,7 +105,31 @@ class LoginContainer extends React.Component {
       passwordValid: !passwordEmpty,
     });
   
-    // Your login logic here
+    if (emailValid && passwordValid) {
+      request("POST",
+      "/api/v1/auth/login",
+      {
+        email: emailValue,
+        password: passwordValue
+      }).then((response) => {
+        setAuthToken(response.data.token);
+        
+      }).catch((error) => {
+        console.log(error)
+        if (error.response) {
+          console.log("I am here")
+          if (error.response.status === 400) {
+            this.setState({ errorMessage: "Неверная электронная почта или пароль" });
+          }
+        } else if (error.message === "Network Error") {
+          <Route
+                        exact
+                        path="/error"
+                        element={<ErrorPage />}
+                    />
+        } 
+      })
+    }
   }
 
   render() {
@@ -103,7 +142,12 @@ class LoginContainer extends React.Component {
       passwordVisited,
       passwordValid,
       passwordValue,
+      errorMessage,
     } = this.state;
+
+    const isEmailInvalid = !emailValid && emailVisited && !emailFocused;
+    const isPasswordInvalid = !passwordValid && passwordVisited && !passwordFocused;
+  
 
     return (
       <div className="modal-container">
@@ -113,12 +157,12 @@ class LoginContainer extends React.Component {
             <label htmlFor="email"></label>
             <input
               placeholder="Эл. почта"
-              className={`${!emailValid && emailVisited ? "invalid" : ""}`}
+              className={`${isEmailInvalid ? "invalid" : ""}`}
               onFocus={this.handleEmailFocus}
               onBlur={this.handleEmailBlur}
               onChange={this.handleEmailChange}
             />
-            {!emailValid && emailVisited && !emailFocused && (
+            {isEmailInvalid && (
               <p className="validation-message">
                 {emailVisited && !emailValid && emailValue.trim() === ""
                   ? "Обязательное поле"
@@ -131,18 +175,22 @@ class LoginContainer extends React.Component {
             <input
               type="password"
               placeholder="Пароль"
-              className={`${!passwordValid && passwordVisited ? "invalid" : ""}`}
+              className={`${isPasswordInvalid ? "invalid" : ""}`}
               onFocus={this.handlePasswordFocus}
               onBlur={this.handlePasswordBlur}
               onChange={this.handlePasswordChange}
             />
             {!passwordValid && passwordVisited && !passwordFocused && (
               <p className="validation-message">
-                {passwordVisited && !passwordValid && passwordValue.trim() === ""
+                {isPasswordInvalid && passwordValue.trim() === ""
                   ? "Обязательное поле"
                   : ""}
               </p>
             )}
+          </div>
+
+          <div className="error-message">
+            {errorMessage}
           </div>
           <button className="btn btn--form" type="submit">
             Войти
