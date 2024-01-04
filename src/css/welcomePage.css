@@ -26,23 +26,35 @@ body, html {
 
 /* Стили для текста поверх изображения */
 .overlay-text {
-  font-family: 'Montserrat', sans-serif; /* Шрифт */
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
-  top: 20px; /* Отступ сверху */
-  left: 20px; /* Отступ слева */
-  color: rgb(9, 49, 101); /* Цвет текста */
-  font-size: 60px; /* Размер шрифта */
-  font-weight: bold; /* Жирный */
-  text-transform: uppercase; /* Заглавные буквы */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Тень текста */
-  letter-spacing: 2px; /* Расстояние между буквами */
+  top: 2vh; /* Задаем верхний отступ в 2% от высоты видимой области экрана */
+  left: 2vw; /* Задаем левый отступ в 2% от ширины видимой области экрана */
+  color: rgb(9, 49, 101);
+  font-size: 6vw; /* Задаем размер шрифта в 6% от ширины видимой области экрана */
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 0.3vw 0.3vw 0.6vw rgba(0, 0, 0, 0.3); /* Используем vw для размера тени текста */
+  letter-spacing: 0.2vw; /* Расстояние между буквами в 0.2% от ширины видимой области экрана */
 }
 
-/* Стили для контейнера "Contacts" и стрелочки */
 .contacts-container {
-  position: relative;
+  position: absolute;
+  top: 4vh; /* Задаем верхний отступ контейнера контактов */
+  right: 4vw; /* Задаем правый отступ контейнера контактов */
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  user-select: none;
+}
+
+@media screen and (max-width: 600px) {
+  .overlay-text {
+    font-size: 10px; /* Уменьшаем размер шрифта до 10 пикселей */
+  }
+
+  .contacts-container {
+    right: 10px; /* Устанавливаем отступ контактов до 10 пикселей от правого края */
+  }
 }
 
 .contacts-text {
