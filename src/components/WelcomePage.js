@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "../css/welcomePage.css";
 import "../css/loginBox.css";
 import Track from "./Track";
@@ -6,7 +6,7 @@ import HeaderString from "./HeaderString";
 import LoginModal from "./LoginModal";
 import Contact from "./ContactComponent.js";
 
-class WelcomePage extends Component {
+class WelcomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
