@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import WelcomePage from './login/components/WelcomePage';
+import WelcomePage from './components/WelcomePage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
