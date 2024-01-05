@@ -74,7 +74,6 @@ function LoginContainer() {
         .catch((error) => {
           if (error.response) {
             if (error.response.status === 400) {
-              console.log("I am here")
               setErrorMessage("Неверная электронная почта или пароль");
             }
           } else if (error.message === "Network Error") {

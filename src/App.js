@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import WelcomePage from './components/WelcomePage';
+import WelcomePage from './pages/WelcomePage';
 import ErrorPage from './pages/ErrorPage';
 
 export default function App() {

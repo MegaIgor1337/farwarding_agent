@@ -1,10 +1,10 @@
 import React from "react";
 import "../css/welcomePage.css";
 import "../css/loginBox.css";
-import Track from "./Track";
-import HeaderString from "./HeaderString";
-import LoginModal from "./LoginModal";
-import Contact from "./ContactComponent.js";
+import Track from "../components/Track.js";
+import HeaderString from "../components/HeaderString.js";
+import LoginModal from "../components/LoginModal.js";
+import Contact from "../components/ContactComponent.js";
 
 class WelcomePage extends React.Component {
   constructor(props) {
