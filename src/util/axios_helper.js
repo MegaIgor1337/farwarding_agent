@@ -28,3 +28,18 @@ export const request = (method, url, data) => {
     data: data
   });
 };
+
+export const getRequest = (method, url, params ) => {
+  let headers = {};
+
+  if (getAuthToken() !== null && getAuthToken() !== "null") {
+    headers = { Authorization: `Bearer ${getAuthToken()}` };
+  }
+
+  return axios({
+    method: method,
+    headers: headers,
+    url: url,
+    params: params
+  });
+}

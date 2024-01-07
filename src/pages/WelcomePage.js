@@ -4,7 +4,7 @@ import "../css/loginBox.css";
 import Track from "../components/Track.js";
 import HeaderString from "../components/HeaderString.js";
 import LoginModal from "../components/LoginModal.js";
-import Contact from "../components/ContactComponent.js";
+import Contact from "../components/Contacts.js";
 
 class WelcomePage extends React.Component {
   constructor(props) {
